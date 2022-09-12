@@ -28,7 +28,7 @@ class Contenedor {
         try{
             const contenidoArchivo=await this.#leerArchivo()
     
-        if (contenidoArchivo !== 0) {
+        if (contenidoArchivo !== undefined ) {
     
            await fs.promises.writeFile(this.nombreArchivo,JSON.stringify([...contenidoArchivo, {...prod,idProducto:contenidoArchivo[contenidoArchivo.length -1].idProducto + 1 }], null, 2), 'utf-8')
            console.log ("guardado despues")
@@ -105,15 +105,15 @@ class Contenedor {
 const contenedor1=new Contenedor('./productos.txt')
 
 const  prod1=new producto("azucar",120)
-const  prod2=new producto("aceite", 300)
+//const  prod2=new producto("aceite", 300)
 //const  prod3=new producto("sal", 250)
 
-//contenedor1.save(prod1)
+contenedor1.save(prod1)
 //contenedor1.save(prod2)
 //contenedor1.save(prod3)
 //contenedor1.getById(2)
 //contenedor1.getAll()
 //contenedor1.deleteAll()
-contenedor1.deleteById(2)
+//contenedor1.deleteById(2)
 
 
